@@ -39,15 +39,17 @@ export default function App() {
     <div className="relative min-h-screen bg-darkBg text-white overflow-hidden font-sans">
       
       {/* Aurora Ambient Background Glow Elements */}
-      <div className="absolute top-[10%] left-[-10%] w-[45vw] h-[45vw] rounded-full bg-accentPurple/15 blur-[120px] pointer-events-none aurora-bg" />
-      <div className="absolute top-[40%] right-[-15%] w-[40vw] h-[40vw] rounded-full bg-accentViolet/12 blur-[130px] pointer-events-none aurora-bg-delay" />
-      <div className="absolute bottom-[10%] left-[5%] w-[35vw] h-[35vw] rounded-full bg-accentPurple/10 blur-[110px] pointer-events-none aurora-bg" />
+      <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+        <div className="aurora-glow-1" />
+        <div className="aurora-glow-2" />
+        <div className="aurora-glow-3" />
+      </div>
 
       {/* Floating Header */}
       <Navbar />
 
       {/* Main Dashboard Layout Container */}
-      <main className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-12 z-10">
+      <main className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 z-10">
         
         {/* 
           Dashboard Responsive Grid:

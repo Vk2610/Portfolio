@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaReact, FaHtml5, FaCss3Alt, FaBootstrap, FaNodeJs, FaJava, FaGitAlt, FaGithub, FaDocker, FaFigma } from 'react-icons/fa';
-import { SiJavascript, SiTypescript, SiTailwindcss, SiMongodb, SiMysql, SiPostgresql, SiRedis, SiExpress, SiPython, SiFirebase, SiPostman, SiVercel } from 'react-icons/si';
+import { FaReact, FaHtml5, FaCss3Alt, FaBootstrap, FaNodeJs, FaGitAlt, FaGithub, FaFigma } from 'react-icons/fa';
+import { SiJavascript, SiTypescript, SiTailwindcss, SiMongodb, SiMysql, SiExpress, SiPython, SiFirebase, SiPostman, SiVercel } from 'react-icons/si';
 import { VscVscode } from 'react-icons/vsc';
 
 const skillsData = {
@@ -19,20 +19,16 @@ const skillsData = {
     { name: 'Node.js', icon: <FaNodeJs className="text-[#339933]" size={28} />, color: 'rgba(51, 153, 51, 0.15)' },
     { name: 'Express.js', icon: <SiExpress className="text-white" size={26} />, color: 'rgba(255, 255, 255, 0.1)' },
     { name: 'Python', icon: <SiPython className="text-[#3776AB]" size={26} />, color: 'rgba(55, 118, 171, 0.15)' },
-    { name: 'Java', icon: <FaJava className="text-[#007396]" size={28} />, color: 'rgba(0, 115, 150, 0.15)' },
     { name: 'Firebase', icon: <SiFirebase className="text-[#FFCA28]" size={26} />, color: 'rgba(255, 202, 40, 0.15)' },
   ],
   Database: [
     { name: 'MongoDB', icon: <SiMongodb className="text-[#47A248]" size={28} />, color: 'rgba(71, 162, 72, 0.15)' },
     { name: 'MySQL', icon: <SiMysql className="text-[#4479A1]" size={28} />, color: 'rgba(68, 121, 161, 0.15)' },
-    { name: 'PostgreSQL', icon: <SiPostgresql className="text-[#4169E1]" size={28} />, color: 'rgba(65, 105, 225, 0.15)' },
-    { name: 'Redis', icon: <SiRedis className="text-[#DC382D]" size={26} />, color: 'rgba(220, 56, 45, 0.15)' },
   ],
   'Tools & Others': [
     { name: 'Git', icon: <FaGitAlt className="text-[#F05032]" size={28} />, color: 'rgba(240, 80, 50, 0.15)' },
     { name: 'GitHub', icon: <FaGithub className="text-white" size={28} />, color: 'rgba(255, 255, 255, 0.1)' },
     { name: 'VS Code', icon: <VscVscode className="text-[#007ACC]" size={26} />, color: 'rgba(0, 122, 204, 0.15)' },
-    { name: 'Docker', icon: <FaDocker className="text-[#2496ED]" size={28} />, color: 'rgba(36, 150, 237, 0.15)' },
     { name: 'Postman', icon: <SiPostman className="text-[#FF6C37]" size={26} />, color: 'rgba(255, 108, 55, 0.15)' },
     { name: 'Figma', icon: <FaFigma className="text-[#F24E1E]" size={26} />, color: 'rgba(242, 78, 30, 0.15)' },
     { name: 'Vercel', icon: <SiVercel className="text-white" size={24} />, color: 'rgba(255, 255, 255, 0.1)' },
@@ -121,14 +117,21 @@ export default function Skills() {
                   whileHover={{ 
                     y: -6, 
                     scale: 1.03,
-                    boxShadow: `0 10px 25px -5px ${skill.color}`,
-                    borderColor: skill.color
+                    boxShadow: `0 12px 25px -8px ${skill.color.replace('0.15', '0.35').replace('0.1', '0.2')}`,
+                    borderColor: skill.color.replace('0.15', '0.4').replace('0.1', '0.25')
                   }}
-                  className="bg-glass/80 border border-glass rounded-2xl p-6 flex flex-col items-center justify-center gap-4 transition-all duration-300 cursor-pointer"
+                  style={{
+                    borderColor: skill.color.replace('0.15', '0.12').replace('0.1', '0.08'),
+                    boxShadow: `0 4px 15px -10px ${skill.color.replace('0.15', '0.2').replace('0.1', '0.12')}`
+                  }}
+                  className="bg-glass/85 border rounded-2xl p-6 flex flex-col items-center justify-center gap-4 transition-all duration-300 cursor-pointer"
                 >
                   <div 
                     className="w-14 h-14 rounded-2xl flex items-center justify-center border border-white/5"
-                    style={{ backgroundColor: skill.color || 'rgba(255,255,255,0.05)' }}
+                    style={{ 
+                      backgroundColor: skill.color,
+                      filter: `drop-shadow(0 0 4px ${skill.color.replace('0.15', '0.55').replace('0.1', '0.4')})`
+                    }}
                   >
                     {skill.icon}
                   </div>

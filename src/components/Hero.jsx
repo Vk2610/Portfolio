@@ -18,7 +18,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="relative w-full min-h-[90vh] md:min-h-screen pt-24 pb-8 flex items-center">
+    <section id="home" className="relative w-full min-h-[90vh] md:min-h-screen pt-2 pb-8 flex items-center">
       {/* Background radial glow */}
       <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[350px] md:w-[500px] h-[350px] md:h-[500px] rounded-full bg-accentPurple/25 blur-[80px] pointer-events-none aurora-bg" />
       <div className="absolute top-1/3 right-1/4 translate-x-1/2 w-[300px] md:w-[400px] h-[300px] md:h-[400px] rounded-full bg-accentViolet/20 blur-[80px] pointer-events-none aurora-bg-delay" />

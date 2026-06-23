@@ -63,10 +63,10 @@ export default function Navbar() {
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 md:px-8 py-4 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 md:px-12 ${
         scrolled 
-          ? 'bg-glass border-b border-glass shadow-lg backdrop-blur-md py-3' 
-          : 'bg-transparent py-5'
+          ? 'bg-glass border-b border-glass shadow-lg backdrop-blur-md py-3.5' 
+          : 'bg-transparent py-6'
       }`}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -92,9 +92,9 @@ export default function Navbar() {
                   e.preventDefault();
                   scrollToSection(item.href.slice(1));
                 }}
-                className={`relative px-4 py-2 text-xs font-medium transition-all duration-300 rounded-full ${
+                className={`relative px-5 py-2.5 text-sm sm:text-base font-semibold transition-all duration-300 rounded-full ${
                   isActive 
-                    ? 'text-white font-semibold' 
+                    ? 'text-white font-bold' 
                     : 'text-gray-400 hover:text-white'
                 }`}
               >
@@ -115,7 +115,7 @@ export default function Navbar() {
         <div className="hidden md:block">
           <button
             onClick={() => scrollToSection('contact')}
-            className="relative overflow-hidden px-5 py-2.5 rounded-full bg-gradient-to-r from-accentPurple to-accentViolet text-white font-medium text-xs transition-all duration-300 hover:shadow-purple-glow hover:scale-105"
+            className="relative overflow-hidden px-6 py-3 rounded-full bg-gradient-to-r from-accentPurple to-accentViolet text-white font-semibold text-sm sm:text-base transition-all duration-300 hover:shadow-purple-glow hover:scale-105"
           >
             Let's Connect
           </button>
@@ -150,7 +150,7 @@ export default function Navbar() {
                     e.preventDefault();
                     scrollToSection(item.href.slice(1));
                   }}
-                  className={`px-4 py-2.5 rounded-xl text-xs font-medium transition-all duration-200 ${
+                  className={`px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 ${
                     isActive
                       ? 'bg-accentPurple/30 border border-accentPurple/50 text-white'
                       : 'text-gray-400 hover:text-white hover:bg-white/5'
@@ -162,7 +162,7 @@ export default function Navbar() {
             })}
             <button
               onClick={() => scrollToSection('contact')}
-              className="w-full mt-2 py-2.5 rounded-xl bg-gradient-to-r from-accentPurple to-accentViolet text-white font-medium text-xs text-center shadow-purple-glow"
+              className="w-full mt-2 py-2.5 rounded-xl bg-gradient-to-r from-accentPurple to-accentViolet text-white font-semibold text-sm text-center shadow-purple-glow"
             >
               Let's Connect
             </button>
