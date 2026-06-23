@@ -108,7 +108,7 @@ export default function Projects() {
             }}
             breakpoints={{
               640: { slidesPerView: 2 },
-              1280: { slidesPerView: 2.2 }
+              1024: { slidesPerView: 3 }
             }}
             className="pb-12"
           >

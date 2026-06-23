@@ -74,7 +74,7 @@ export default function Navbar() {
         <a 
           href="#home" 
           onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}
-          className="text-2xl font-bold tracking-tight text-white flex items-center gap-1 font-sans cursor-pointer group"
+          className="text-xl font-bold tracking-tight text-white flex items-center gap-1 font-sans cursor-pointer group"
         >
           <span>Vedant</span>
           <span className="text-accentPurple group-hover:animate-ping duration-1000">.</span>
@@ -92,7 +92,7 @@ export default function Navbar() {
                   e.preventDefault();
                   scrollToSection(item.href.slice(1));
                 }}
-                className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-full ${
+                className={`relative px-4 py-2 text-xs font-medium transition-all duration-300 rounded-full ${
                   isActive 
                     ? 'text-white font-semibold' 
                     : 'text-gray-400 hover:text-white'
@@ -115,7 +115,7 @@ export default function Navbar() {
         <div className="hidden md:block">
           <button
             onClick={() => scrollToSection('contact')}
-            className="relative overflow-hidden px-5 py-2.5 rounded-full bg-gradient-to-r from-accentPurple to-accentViolet text-white font-medium text-sm transition-all duration-300 hover:shadow-purple-glow hover:scale-105"
+            className="relative overflow-hidden px-5 py-2.5 rounded-full bg-gradient-to-r from-accentPurple to-accentViolet text-white font-medium text-xs transition-all duration-300 hover:shadow-purple-glow hover:scale-105"
           >
             Let's Connect
           </button>
@@ -150,7 +150,7 @@ export default function Navbar() {
                     e.preventDefault();
                     scrollToSection(item.href.slice(1));
                   }}
-                  className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${
+                  className={`px-4 py-2.5 rounded-xl text-xs font-medium transition-all duration-200 ${
                     isActive
                       ? 'bg-accentPurple/30 border border-accentPurple/50 text-white'
                       : 'text-gray-400 hover:text-white hover:bg-white/5'
@@ -162,7 +162,7 @@ export default function Navbar() {
             })}
             <button
               onClick={() => scrollToSection('contact')}
-              className="w-full mt-2 py-2.5 rounded-xl bg-gradient-to-r from-accentPurple to-accentViolet text-white font-medium text-sm text-center shadow-purple-glow"
+              className="w-full mt-2 py-2.5 rounded-xl bg-gradient-to-r from-accentPurple to-accentViolet text-white font-medium text-xs text-center shadow-purple-glow"
             >
               Let's Connect
             </button>

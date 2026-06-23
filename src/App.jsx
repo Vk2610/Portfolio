@@ -55,41 +55,14 @@ export default function App() {
           - Mobile (grid-cols-1): Stacks sections in logical reading order:
             Hero -> About -> Skills -> Projects -> Experience -> GitHub + Contact
         */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-          
-          {/* ROW 1: Left = Hero, Right = About */}
-          <div className="lg:col-start-1 lg:row-start-1 h-full">
-            <Hero />
-          </div>
-          <div className="lg:col-start-2 lg:row-start-1 h-full">
-            <About />
-          </div>
-
-          {/* ROW 2: Left = Skills, Right = Projects */}
-          <div className="lg:col-start-1 lg:row-start-2 h-full">
-            <Skills />
-          </div>
-          <div className="lg:col-start-2 lg:row-start-2 h-full">
-            <Projects />
-          </div>
-
-          {/* ROW 3: Left = Experience, Right = GitHub & Contact */}
-          <div className="lg:col-start-1 lg:row-start-3 h-full">
-            <Experience />
-          </div>
-          
-          {/* Right Column Row 3 contains GitHub Activity and Contact side-by-side or stacked */}
-          <div className="lg:col-start-2 lg:row-start-3 flex flex-col gap-6">
-            <div className="grid grid-cols-1 xl:grid-cols-5 gap-6">
-              <div className="xl:col-span-3">
-                <Github />
-              </div>
-              <div className="xl:col-span-2">
-                <Contact />
-              </div>
-            </div>
-          </div>
-
+        <div className="flex flex-col gap-8">
+          <Hero />
+          <About />
+          <Skills />
+          <Projects />
+          <Experience />
+          <Github />
+          <Contact />
         </div>
 
         {/* Global Footer Credits */}

@@ -35,12 +35,12 @@ export default function Hero() {
             className="lg:col-span-7 flex flex-col items-start text-left"
           >
             {/* Hi Badge */}
-            <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-white mb-6 backdrop-blur-sm">
+            <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-white mb-6 backdrop-blur-sm">
               Hi, I'm Vedant <span className="animate-bounce">👋</span>
             </span>
 
             {/* Title */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white mb-6 leading-[1.1] font-sans">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mb-6 leading-[1.1] font-sans">
               Building Scalable <br />
               <span className="bg-gradient-to-r from-accentPurple via-[#A855F7] to-[#C084FC] bg-clip-text text-transparent text-glow-purple">
                 Digital Experiences
@@ -48,7 +48,7 @@ export default function Hero() {
             </h1>
 
             {/* Description */}
-            <p className="text-base sm:text-lg text-grayText mb-8 max-w-xl leading-relaxed">
+            <p className="text-sm sm:text-base text-grayText mb-8 max-w-xl leading-relaxed">
               Full Stack MERN Developer passionate about building modern web applications and solving real-world problems.
             </p>
 
@@ -56,7 +56,7 @@ export default function Hero() {
             <div className="flex flex-wrap gap-4 mb-8">
               <button
                 onClick={scrollToProjects}
-                className="group flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-accentPurple to-accentViolet text-white font-medium text-sm transition-all duration-300 hover:shadow-purple-glow hover:scale-105"
+                className="group flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-accentPurple to-accentViolet text-white font-medium text-xs transition-all duration-300 hover:shadow-purple-glow hover:scale-105"
               >
                 <span>View Projects</span>
                 <FaChevronRight size={12} className="transition-transform duration-300 group-hover:translate-x-1" />
@@ -64,7 +64,7 @@ export default function Hero() {
               
               <a
                 href="#resume"
-                className="flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 border border-white/10 text-white font-medium text-sm transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:scale-105"
+                className="flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 border border-white/10 text-white font-medium text-xs transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:scale-105"
               >
                 <span>Download Resume</span>
                 <FaDownload size={12} />
@@ -135,7 +135,7 @@ export default function Hero() {
               {[
                 { icon: <FaReact className="text-[#61DAFB]" size={22} />, label: 'React' },
                 { icon: <FaNodeJs className="text-[#339933]" size={22} />, label: 'Node.js' },
-                { icon: <div className="text-white text-xs font-bold w-6 h-6 rounded-full bg-gray-700/60 border border-gray-500/30 flex items-center justify-center">ex</div>, label: 'Express.js' },
+                { icon: <div className="text-white text-[10px] font-bold w-6 h-6 rounded-full bg-gray-700/60 border border-gray-500/30 flex items-center justify-center">ex</div>, label: 'Express.js' },
                 { icon: <SiMongodb className="text-[#47A248]" size={22} />, label: 'MongoDB' },
                 { icon: <SiMysql className="text-[#4479A1]" size={22} />, label: 'MySQL' }
               ].map((tech, index) => (
@@ -143,7 +143,7 @@ export default function Hero() {
                   <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center transition-all duration-300 group-hover:bg-accentPurple/10 group-hover:border-accentPurple/30 group-hover:scale-110">
                     {tech.icon}
                   </div>
-                  <span className="text-[10px] text-grayText font-medium transition-colors duration-300 group-hover:text-white">
+                  <span className="text-[9px] text-grayText font-medium transition-colors duration-300 group-hover:text-white">
                     {tech.label}
                   </span>
                 </div>
