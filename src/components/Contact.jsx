@@ -5,25 +5,53 @@ import { FiMail, FiPhone, FiMapPin, FiSend, FiX } from 'react-icons/fi';
 export default function Contact() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
     
-    // Simulate sending message
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setIsModalOpen(false);
+    setLoading(true);
+    setError(null);
+    setSuccess(false);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message.');
+      }
+
+      setSuccess(true);
       setFormData({ name: '', email: '', message: '' });
-    }, 2000);
+      
+      // Close modal after showing success state briefly
+      setTimeout(() => {
+        setSuccess(false);
+        setIsModalOpen(false);
+      }, 3000);
+    } catch (err) {
+      console.error('Contact form submission error:', err);
+      setError(err.message || 'Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const contactDetails = [
-    { icon: <FiMail className="text-accentPurple" size={18} />, label: 'Email', value: 'vedant@example.com', href: 'mailto:vedant@example.com' },
-    { icon: <FiPhone className="text-accentPurple" size={18} />, label: 'Phone', value: '+91 12345 67890', href: 'tel:+911234567890' },
-    { icon: <FiMapPin className="text-accentPurple" size={18} />, label: 'Location', value: 'Maharashtra, India', href: 'https://maps.google.com/?q=Maharashtra,India' }
+    { icon: <FiMail className="text-accentPurple" size={18} />, label: 'Email', value: 'vedantkumbhar82@gmail.com', href: 'mailto:vedantkumbhar82@gmail.com' },
+    { icon: <FiPhone className="text-accentPurple" size={18} />, label: 'Phone', value: '+91 9067723468', href: 'tel:+919067723468' },
+    { icon: <FiMapPin className="text-accentPurple" size={18} />, label: 'Location', value: 'Satara, Maharashtra, India', href: 'https://maps.google.com/?q=Satara,Maharashtra,India' }
   ];
 
   return (
@@ -85,7 +113,12 @@ export default function Contact() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setIsModalOpen(false)}
+              onClick={() => {
+                if (!loading) {
+                  setIsModalOpen(false);
+                  setError(null);
+                }
+              }}
               className="absolute inset-0 bg-black/70 backdrop-blur-sm"
             />
 
@@ -98,8 +131,14 @@ export default function Contact() {
             >
               {/* Close Button */}
               <button 
-                onClick={() => setIsModalOpen(false)}
-                className="absolute top-4 right-4 text-grayText hover:text-white transition-colors duration-200"
+                onClick={() => {
+                  if (!loading) {
+                    setIsModalOpen(false);
+                    setError(null);
+                  }
+                }}
+                disabled={loading}
+                className="absolute top-4 right-4 text-grayText hover:text-white transition-colors duration-200 disabled:opacity-30"
               >
                 <FiX size={20} />
               </button>
@@ -107,7 +146,13 @@ export default function Contact() {
               <h3 className="text-xl font-bold text-white mb-1 font-sans">Send a Message</h3>
               <p className="text-xs text-grayText mb-6">Drop your details below and I'll get back to you shortly.</p>
 
-              {submitted ? (
+              {error && (
+                <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-xl text-red-400 text-xs mb-4">
+                  {error}
+                </div>
+              )}
+
+              {success ? (
                 <div className="py-12 flex flex-col items-center justify-center text-center">
                   <div className="w-14 h-14 rounded-full bg-green-500/20 border border-green-500/50 flex items-center justify-center text-green-400 mb-4 animate-bounce">
                     <FiSend size={24} />
@@ -122,10 +167,11 @@ export default function Contact() {
                     <input 
                       type="text" 
                       required
+                      disabled={loading}
                       placeholder="Your Name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-black/30 border border-glass rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-accentPurple/50 focus:bg-black/50 transition-all duration-300"
+                      className="w-full bg-black/30 border border-glass rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-accentPurple/50 focus:bg-black/50 transition-all duration-300 disabled:opacity-50"
                     />
                   </div>
 
@@ -134,10 +180,11 @@ export default function Contact() {
                     <input 
                       type="email" 
                       required
+                      disabled={loading}
                       placeholder="name@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full bg-black/30 border border-glass rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-accentPurple/50 focus:bg-black/50 transition-all duration-300"
+                      className="w-full bg-black/30 border border-glass rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-accentPurple/50 focus:bg-black/50 transition-all duration-300 disabled:opacity-50"
                     />
                   </div>
 
@@ -145,20 +192,22 @@ export default function Contact() {
                     <label className="text-[11px] font-bold text-grayText uppercase">Message</label>
                     <textarea 
                       required
+                      disabled={loading}
                       rows="4"
                       placeholder="Hi Vedant, I'd love to connect..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full bg-black/30 border border-glass rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-accentPurple/50 focus:bg-black/50 resize-none transition-all duration-300"
+                      className="w-full bg-black/30 border border-glass rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-accentPurple/50 focus:bg-black/50 resize-none transition-all duration-300 disabled:opacity-50"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-3 rounded-xl bg-gradient-to-r from-accentPurple to-accentViolet text-white font-medium text-sm flex items-center justify-center gap-2 hover:shadow-purple-glow transition-all duration-300 mt-2"
+                    disabled={loading}
+                    className="w-full py-3 rounded-xl bg-gradient-to-r from-accentPurple to-accentViolet text-white font-medium text-sm flex items-center justify-center gap-2 hover:shadow-purple-glow transition-all duration-300 mt-2 disabled:opacity-50 cursor-pointer"
                   >
-                    <span>Submit Message</span>
-                    <FiSend size={12} />
+                    <span>{loading ? 'Sending...' : 'Submit Message'}</span>
+                    {!loading && <FiSend size={12} />}
                   </button>
                 </form>
               )}

@@ -77,7 +77,7 @@ export default function Hero() {
                 { icon: <FaGithub size={20} />, url: 'https://github.', label: 'GitHub' },
                 { icon: <FaLinkedin size={20} />, url: 'https://linkedin.', label: 'LinkedIn' },
                 { icon: <SiLeetcode size={20} />, url: 'https://leetcode.', label: 'LeetCode' },
-                { icon: <FaEnvelope size={20} />, url: 'mailto:vedant@example.com', label: 'Email' }
+                { icon: <FaEnvelope size={20} />, url: 'mailto:vedantkumbhar82@gmail.com', label: 'Email' }
               ].map((social, index) => (
                 <a
                   key={index}
