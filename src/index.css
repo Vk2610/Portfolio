@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-darkBg: #050505;
+  --color-accentPurple: #8B5CF6;
+  --color-accentViolet: #A855F7;
+  --color-grayText: #9CA3AF;
+  --color-glassBg: rgba(10, 10, 10, 0.45);
+  --color-glassBorder: rgba(255, 255, 255, 0.06);
+  --color-glassBorderActive: rgba(139, 92, 246, 0.25);
+  
+  --animate-pulse-slow: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-orbit: orbit 20s linear infinite;
+  
+  --shadow-purple-glow: 0 0 25px -5px rgba(139, 92, 246, 0.35);
+  --shadow-violet-glow: 0 0 25px -5px rgba(168, 85, 247, 0.35);
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes orbit {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+}
+
+:root {
+  font-family: 'Inter', sans-serif;
+  color-scheme: dark;
+  background-color: #050505;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #050505;
+  color: #ffffff;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Utilities in Tailwind v4 style */
+@utility bg-glass {
+  background: rgba(10, 10, 10, 0.45);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+@utility border-glass {
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+@utility border-glass-active {
+  border: 1px solid rgba(139, 92, 246, 0.25);
+}
+
+@utility text-glow-purple {
+  text-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+}
+
+@utility text-glow-violet {
+  text-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+}
+
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Custom Smooth Transitions */
+.hover-lift {
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              box-shadow 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              border-color 0.4s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 12px 30px -10px rgba(139, 92, 246, 0.25);
+  border-color: rgba(139, 92, 246, 0.35);
+}
+
+/* Timeline Custom Styles */
+.timeline-line {
+  background: linear-gradient(to bottom, rgba(139, 92, 246, 0.5) 0%, rgba(168, 85, 247, 0.1) 100%);
+}
+
+/* Animation Utilities */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.1) translate(5%, 5%);
+  }
+}
+
+.aurora-bg {
+  animation: pulse-glow 15s ease-in-out infinite;
+}
+
+.aurora-bg-delay {
+  animation: pulse-glow 18s ease-in-out infinite alternate;
+}
+
+/* Swiper.js Overrides */
+.swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.2) !important;
+  opacity: 1 !important;
+  width: 8px !important;
+  height: 8px !important;
+  transition: all 0.3s ease !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #8B5CF6 !important;
+  width: 24px !important;
+  border-radius: 4px !important;
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.8) !important;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 18px !important;
+  font-weight: bold;
+}
