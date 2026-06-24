@@ -31,7 +31,13 @@
   font-family: 'Inter', sans-serif;
   color-scheme: dark;
   background-color: #050505;
-  font-size: 18.5px;
+  font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    font-size: 18.5px;
+  }
 }
 
 body {

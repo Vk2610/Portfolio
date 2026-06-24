@@ -155,14 +155,14 @@ export default function Github() {
         </div>
 
         {/* Year Selector Tabs */}
-        <div className="flex flex-wrap items-center justify-end gap-2 mb-4">
+        <div className="flex flex-wrap items-center justify-start sm:justify-end gap-2 mb-4">
           <span className="text-xs font-semibold text-grayText mr-1">Filter Year:</span>
-          <div className="flex items-center gap-1 bg-black/40 border border-glass rounded-xl p-1">
+          <div className="flex flex-wrap items-center gap-1 bg-black/40 border border-glass rounded-xl p-1">
             {['last', 2026, 2025, 2024, 2023].map((y) => (
               <button
                 key={y}
                 onClick={() => setSelectedYear(y)}
-                className={`px-3 py-1 rounded-lg text-[10px] sm:text-xs font-bold transition-all duration-300 ${
+                className={`px-3 py-1 rounded-lg text-[10px] sm:text-xs font-bold transition-all duration-300 shrink-0 ${
                   selectedYear === y 
                     ? 'bg-accentPurple text-white shadow-purple-glow' 
                     : 'text-gray-400 hover:text-white'
@@ -175,7 +175,7 @@ export default function Github() {
         </div>
 
         {/* Real-time GitHub Calendar Grid Wrapper */}
-        <div className="bg-black/35 border border-white/5 rounded-2xl p-6 mb-6 overflow-x-auto no-scrollbar flex justify-center items-center">
+        <div className="bg-black/35 border border-white/5 rounded-2xl p-4 md:p-6 mb-6 overflow-x-auto no-scrollbar flex justify-start md:justify-center items-center">
           <div className="min-w-[600px] text-white flex justify-center text-xs">
             <GitHubCalendar 
               username={username}

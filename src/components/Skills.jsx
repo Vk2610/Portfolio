@@ -75,14 +75,14 @@ export default function Skills() {
         </div>
 
         {/* Category Tabs */}
-        <div className="flex flex-wrap items-center gap-2 mb-8 bg-black/30 border border-white/5 p-1.5 rounded-2xl w-fit">
+        <div className="flex items-center gap-2 mb-8 bg-black/30 border border-white/5 p-1.5 rounded-2xl overflow-x-auto no-scrollbar flex-nowrap md:flex-wrap max-w-full w-fit">
           {categories.map((cat) => {
             const isActive = activeTab === cat;
             return (
               <button
                 key={cat}
                 onClick={() => setActiveTab(cat)}
-                className={`relative px-4 sm:px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${
+                className={`relative px-4 sm:px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 shrink-0 ${
                   isActive ? 'text-white' : 'text-gray-400 hover:text-white'
                 }`}
               >

@@ -97,7 +97,7 @@ export default function About() {
             <motion.div 
               animate={{ y: [0, -8, 0] }}
               transition={{ repeat: Infinity, duration: 5, ease: 'easeInOut' }}
-              className="relative w-48 h-48 rounded-full bg-gradient-to-tr from-accentPurple/10 to-accentViolet/10 border border-accentPurple/25 p-2 flex items-center justify-center z-10 shadow-[0_0_40px_rgba(139,92,246,0.15)]"
+              className="relative w-36 h-36 sm:w-48 sm:h-48 rounded-full bg-gradient-to-tr from-accentPurple/10 to-accentViolet/10 border border-accentPurple/25 p-2 flex items-center justify-center z-10 shadow-[0_0_40px_rgba(139,92,246,0.15)]"
             >
               <div className="w-full h-full rounded-full overflow-hidden bg-glass/90 flex items-center justify-center border border-white/5">
                 <img 
@@ -112,7 +112,7 @@ export default function About() {
             <motion.div 
               animate={{ y: [0, -10, 0] }}
               transition={{ repeat: Infinity, duration: 4.2, ease: 'easeInOut', delay: 0.1 }}
-              className="absolute left-[8%] sm:left-[10%] top-[12%] z-20 flex flex-col items-center gap-1 group"
+              className="absolute left-[3%] sm:left-[10%] top-[10%] sm:top-[12%] z-20 flex flex-col items-center gap-1 group"
             >
               <div className="w-12 h-12 rounded-full bg-[#0a0f1d] border border-glass-active flex items-center justify-center text-[#61DAFB] shadow-purple-glow hover:scale-110 transition-transform duration-300">
                 <FaReact size={24} className="animate-[spin_10s_linear_infinite]" />
@@ -124,7 +124,7 @@ export default function About() {
             <motion.div 
               animate={{ y: [0, -8, 0] }}
               transition={{ repeat: Infinity, duration: 3.8, ease: 'easeInOut', delay: 0.5 }}
-              className="absolute right-[8%] sm:right-[12%] top-[14%] z-20 flex flex-col items-center gap-1 group"
+              className="absolute right-[3%] sm:right-[12%] top-[12%] sm:top-[14%] z-20 flex flex-col items-center gap-1 group"
             >
               <div className="w-12 h-12 rounded-full bg-[#0d1c15] border border-glass-active flex items-center justify-center text-[#339933] shadow-purple-glow hover:scale-110 transition-transform duration-300">
                 <FaNodeJs size={24} />
@@ -136,7 +136,7 @@ export default function About() {
             <motion.div 
               animate={{ y: [0, -12, 0] }}
               transition={{ repeat: Infinity, duration: 4.6, ease: 'easeInOut', delay: 0.9 }}
-              className="absolute left-[3%] sm:left-[6%] top-[45%] z-20 flex flex-col items-center gap-1 group"
+              className="absolute left-[0%] sm:left-[6%] top-[45%] z-20 flex flex-col items-center gap-1 group"
             >
               <div className="w-12 h-12 rounded-full bg-[#111] border border-glass-active flex items-center justify-center text-white font-bold text-sm shadow-purple-glow hover:scale-110 transition-transform duration-300">
                 ex
@@ -148,7 +148,7 @@ export default function About() {
             <motion.div 
               animate={{ y: [0, -9, 0] }}
               transition={{ repeat: Infinity, duration: 4.0, ease: 'easeInOut', delay: 1.3 }}
-              className="absolute right-[5%] sm:right-[8%] top-[45%] z-20 flex flex-col items-center gap-1 group"
+              className="absolute right-[0%] sm:right-[8%] top-[45%] z-20 flex flex-col items-center gap-1 group"
             >
               <div className="w-12 h-12 rounded-full bg-[#0d1a10] border border-glass-active flex items-center justify-center text-[#47A248] shadow-purple-glow hover:scale-110 transition-transform duration-300">
                 <SiMongodb size={24} />
@@ -160,7 +160,7 @@ export default function About() {
             <motion.div 
               animate={{ y: [0, -11, 0] }}
               transition={{ repeat: Infinity, duration: 4.5, ease: 'easeInOut', delay: 1.8 }}
-              className="absolute right-[10%] sm:right-[15%] bottom-[12%] z-20 flex flex-col items-center gap-1 group"
+              className="absolute right-[5%] sm:right-[15%] bottom-[12%] z-20 flex flex-col items-center gap-1 group"
             >
               <div className="w-12 h-12 rounded-full bg-[#0d1624] border border-glass-active flex items-center justify-center text-[#4479A1] shadow-purple-glow hover:scale-110 transition-transform duration-300">
                 <SiMysql size={24} />
