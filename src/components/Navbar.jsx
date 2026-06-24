@@ -42,19 +42,41 @@ export default function Navbar() {
   }, []);
 
   const scrollToSection = (id) => {
-    setMobileMenuOpen(false);
     const element = document.getElementById(id);
-    if (element) {
-      const offset = 90; // offset for sticky navbar
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
+    
+    if (mobileMenuOpen) {
+      // Close the mobile menu first
+      setMobileMenuOpen(false);
+      
+      // Wait for the exit transition (300ms) to complete before scrolling
+      setTimeout(() => {
+        if (element) {
+          const offset = 90; // offset for sticky navbar
+          const bodyRect = document.body.getBoundingClientRect().top;
+          const elementRect = element.getBoundingClientRect().top;
+          const elementPosition = elementRect - bodyRect;
+          const offsetPosition = elementPosition - offset;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 300);
+    } else {
+      // Desktop or already closed menu: scroll immediately
+      if (element) {
+        const offset = 90; // offset for sticky navbar
+        const bodyRect = document.body.getBoundingClientRect().top;
+        const elementRect = element.getBoundingClientRect().top;
+        const elementPosition = elementRect - bodyRect;
+        const offsetPosition = elementPosition - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
     }
   };
 
