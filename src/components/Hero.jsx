@@ -74,7 +74,7 @@ export default function Hero() {
             {/* Social Links */}
             <div className="flex items-center gap-4">
               {[
-                { icon: <FaGithub size={20} />, url: 'https://github.', label: 'GitHub' },
+                { icon: <FaGithub size={20} />, url: 'https://github.com/Vk2610', label: 'GitHub' },
                 { icon: <FaLinkedin size={20} />, url: 'https://linkedin.', label: 'LinkedIn' },
                 { icon: <SiLeetcode size={20} />, url: 'https://leetcode.', label: 'LeetCode' },
                 { icon: <FaEnvelope size={20} />, url: 'mailto:vedantkumbhar82@gmail.com', label: 'Email' }
