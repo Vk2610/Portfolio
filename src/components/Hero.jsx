@@ -75,7 +75,7 @@ export default function Hero() {
             <div className="flex items-center gap-4">
               {[
                 { icon: <FaGithub size={20} />, url: 'https://github.com/Vk2610', label: 'GitHub' },
-                { icon: <FaLinkedin size={20} />, url: 'www.linkedin.com/in/vedant-kumbhar-084383221', label: 'LinkedIn' },
+                { icon: <FaLinkedin size={20} />, url: 'https://www.linkedin.com/in/vedant-kumbhar-084383221/', label: 'LinkedIn' },
                 { icon: <SiLeetcode size={20} />, url: 'https://leetcode.', label: 'LeetCode' },
                 { icon: <FaEnvelope size={20} />, url: 'mailto:vedantkumbhar82@gmail.com', label: 'Email' }
               ].map((social, index) => (
