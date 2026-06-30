@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaArrowUp } from 'react-icons/fa';
 
@@ -15,6 +15,7 @@ import Footer from './components/Footer';
 
 export default function App() {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const spotlightRef = useRef(null);
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -28,6 +29,29 @@ export default function App() {
     return () => window.removeEventListener('scroll', toggleVisibility);
   }, []);
 
+  useEffect(() => {
+    const spotlight = spotlightRef.current;
+    if (!spotlight) return;
+
+    const handleMouseMove = (e) => {
+      const { clientX, clientY } = e;
+      spotlight.style.transform = `translate3d(${clientX - 300}px, ${clientY - 300}px, 0)`;
+      spotlight.style.opacity = '1';
+    };
+
+    const handleMouseLeave = () => {
+      spotlight.style.opacity = '0';
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseleave', handleMouseLeave);
+    
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, []);
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -38,6 +62,18 @@ export default function App() {
   return (
     <div className="relative min-h-screen bg-darkBg text-white overflow-hidden font-sans">
       
+      {/* Purple spotlight hover effect following the cursor */}
+      <div 
+        ref={spotlightRef}
+        className="fixed w-[600px] h-[600px] rounded-full pointer-events-none z-0 transition-opacity duration-300 opacity-0 hidden md:block"
+        style={{
+          background: 'radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(168, 85, 247, 0.05) 50%, transparent 70%)',
+          left: 0,
+          top: 0,
+          willChange: 'transform',
+        }}
+      />
+
       {/* Aurora Ambient Background Glow Elements */}
       <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
         <div className="aurora-glow-1" />
