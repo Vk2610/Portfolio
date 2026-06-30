@@ -9,9 +9,9 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-import welfareImg from '../assets/project-welfare.png';
-import tourismImg from '../assets/project-tourism.png';
-import edufordImg from '../assets/project-eduford.png';
+import rayatKutumbImg from '../assets/rayat-kutumb.png';
+import miroImg from '../assets/miro.png';
+import cattleBreedImg from '../assets/cattle-breed.png';
 import cngImg from '../assets/project-cng.png';
 
 const projects = [
@@ -19,28 +19,28 @@ const projects = [
     id: 1,
     name: 'Rayat Kutumb Kalyan Yojana',
     desc: 'Welfare management platform with role-based authentication, claims, payments and PDF generation.',
-    image: welfareImg,
-    tags: ['React', 'Node.js', 'MySQL'],
-    github: 'https://github.',
-    demo: 'https://demo.'
+    image: rayatKutumbImg,
+    tags: ['React', 'Node.js', 'MySQL', 'Express.js', 'Cloudinary'],
+    github: 'https://github.com/Vk2610/rayat-kutumb-kalyan-frontend.git',
+    demo: 'https://rayat-kutumb-kalyan-frontend-git-main-vk2610s-projects.vercel.app/'
   },
   {
     id: 2,
-    name: 'Coastal Tourism App',
-    desc: 'Real-time beach suitability analysis with weather alerts and location-based recommendations.',
-    image: tourismImg,
-    tags: ['React', 'Express.js', 'API'],
-    github: 'https://github.',
-    demo: 'https://demo.'
+    name: 'Miro Clone',
+    desc: 'A real-time collaborative whiteboard platform featuring shapes, drawing tools, sticky notes, and multiplayer synchronization.',
+    image: miroImg,
+    tags: ['Next.js', 'Liveblocks', 'Convex', 'Clerk'],
+    github: 'https://github.com/Vk2610/Miro.git',
+    demo: 'https://miro-nine.vercel.app/'
   },
   {
     id: 3,
-    name: 'Eduford University Website',
-    desc: 'University portal with authentication, student profile management and transaction system.',
-    image: edufordImg,
-    tags: ['React', 'MongoDB', 'Express.js'],
-    github: 'https://github.',
-    demo: 'https://demo.'
+    name: 'Cattle Breed Detector',
+    desc: 'Python-based computer vision application utilizing CNNs and machine learning algorithms to identify and classify indigenous Indian cattle breeds.',
+    image: cattleBreedImg,
+    tags: ['Python', 'Computer Vision', 'PyTorch', 'Machine Learning'],
+    github: 'https://github.com/Vk2610/Cattle-Breed-Detector.git',
+    demo: ''
   },
   {
     id: 4,
@@ -117,7 +117,7 @@ export default function Projects() {
                 <div className="group bg-glass/85 border border-glass rounded-[20px] overflow-hidden flex flex-col h-full hover:border-accentPurple/30 transition-all duration-300 hover:shadow-purple-glow">
                   
                   {/* Image Container with Hover zoom */}
-                  <div className="w-full aspect-[16/10] overflow-hidden bg-black/40 border-b border-glass relative">
+                  <div className="w-full aspect-[2.2/1] overflow-hidden bg-black/40 border-b border-glass relative">
                     <img 
                       src={project.image} 
                       alt={project.name} 
@@ -129,10 +129,10 @@ export default function Projects() {
 
                   {/* Body Content */}
                   <div className="p-6 flex flex-col flex-grow text-left">
-                    <h3 className="text-xl font-bold text-white mb-2 font-sans group-hover:text-accentPurple transition-colors duration-300">
+                    <h3 className="text-2xl font-bold text-white mb-2 font-sans group-hover:text-accentPurple transition-colors duration-300">
                       {project.name}
                     </h3>
-                    <p className="text-sm text-grayText leading-relaxed mb-6 flex-grow">
+                    <p className="text-base text-grayText leading-relaxed mb-6 flex-grow">
                       {project.desc}
                     </p>
 
@@ -143,7 +143,7 @@ export default function Projects() {
                         {project.tags.map((tag) => (
                           <span 
                             key={tag} 
-                            className="px-2.5 py-1 rounded-md bg-white/5 border border-white/5 text-[11px] font-semibold text-grayText"
+                            className="px-2.5 py-1 rounded-md bg-white/5 border border-white/5 text-xs font-semibold text-grayText"
                           >
                             {tag}
                           </span>
@@ -152,24 +152,28 @@ export default function Projects() {
 
                       {/* Code/Demo Action Links */}
                       <div className="flex items-center gap-2">
-                        <a 
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="w-8 h-8 rounded-full bg-white/5 border border-white/10 text-grayText hover:text-white flex items-center justify-center hover:bg-accentPurple/10 hover:border-accentPurple/30 transition-all duration-300"
-                          title="View Code on GitHub"
-                        >
-                          <FaGithub size={15} />
-                        </a>
-                        <a 
-                          href={project.demo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="w-8 h-8 rounded-full bg-white/5 border border-white/10 text-grayText hover:text-white flex items-center justify-center hover:bg-accentPurple/10 hover:border-accentPurple/30 transition-all duration-300"
-                          title="Live Demo"
-                        >
-                          <HiOutlineExternalLink size={16} />
-                        </a>
+                        {project.github && project.github !== 'https://github.' && (
+                          <a 
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-8 h-8 rounded-full bg-white/5 border border-white/10 text-grayText hover:text-white flex items-center justify-center hover:bg-accentPurple/10 hover:border-accentPurple/30 transition-all duration-300"
+                            title="View Code on GitHub"
+                          >
+                            <FaGithub size={15} />
+                          </a>
+                        )}
+                        {project.demo && project.demo !== 'https://demo.' && (
+                          <a 
+                            href={project.demo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-8 h-8 rounded-full bg-white/5 border border-white/10 text-grayText hover:text-white flex items-center justify-center hover:bg-accentPurple/10 hover:border-accentPurple/30 transition-all duration-300"
+                            title="Live Demo"
+                          >
+                            <HiOutlineExternalLink size={16} />
+                          </a>
+                        )}
                       </div>
                     </div>
 
