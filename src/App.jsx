@@ -11,7 +11,7 @@ import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Github from './components/Github';
 import Contact from './components/Contact';
-import Footer from './components/Footer';
+// import Footer from './components/Footer';
 
 export default function App() {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -104,7 +104,7 @@ export default function App() {
         </div>
 
         {/* Global Footer Credits */}
-        <Footer />
+        {/* <Footer /> */}
 
       </main>
 

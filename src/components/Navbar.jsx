@@ -96,7 +96,7 @@ export default function Navbar() {
         <a 
           href="#home" 
           onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}
-          className="text-xl font-bold tracking-tight text-white flex items-center gap-1 font-sans cursor-pointer group"
+          className="text-2xl font-bold tracking-tight text-white flex items-center gap-1 font-sans cursor-pointer group"
         >
           <span>Vedant</span>
           <span className="text-accentPurple group-hover:animate-ping duration-1000">.</span>
