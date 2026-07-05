@@ -30,12 +30,7 @@ export default function About() {
             
             <div className="space-y-4 text-grayText text-sm sm:text-base leading-relaxed mb-8">
               <p>
-                I'm a Final Year Computer Science Engineering student who loves building full stack web applications. 
-                I enjoy turning ideas into real-world products that provide value to users.
-              </p>
-              <p>
-                I have completed a Full Stack Development Internship at Vieh Group where I gained hands-on experience in 
-                developing responsive applications and working with databases.
+                I'm a Full-Stack Developer passionate about building modern, scalable web applications that deliver real value. I work across the entire development stack, from creating responsive React interfaces to developing secure backend services, designing relational databases, and deploying complete applications. I enjoy solving real-world problems through clean code, thoughtful design, and continuous learning.
               </p>
             </div>
 
@@ -160,7 +155,7 @@ export default function About() {
             <motion.div 
               animate={{ y: [0, -11, 0] }}
               transition={{ repeat: Infinity, duration: 4.5, ease: 'easeInOut', delay: 1.8 }}
-              className="absolute right-[5%] sm:right-[15%] bottom-[12%] z-20 flex flex-col items-center gap-1 group"
+              className="absolute right-[5%] sm:right-[15%] bottom-[6%] z-20 flex flex-col items-center gap-1 group"
             >
               <div className="w-12 h-12 rounded-full bg-[#0d1624] border border-glass-active flex items-center justify-center text-[#4479A1] shadow-purple-glow hover:scale-110 transition-transform duration-300">
                 <SiMysql size={24} />

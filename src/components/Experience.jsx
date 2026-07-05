@@ -1,18 +1,20 @@
 import React from 'react';
 import { FiBriefcase } from 'react-icons/fi';
 import { motion } from 'framer-motion';
+import siliconLogo from '../assets/silicon.jpeg';
 
 const journey = [
   {
     role: 'Full Stack Developer Intern',
-    company: 'Vieh Group',
-    duration: 'Jan 2025 - May 2025',
+    company: 'Silicon Savants, Satara, Maharashtra',
+    duration: '23 Feb 2025 – 29 May 2025',
+    logo: siliconLogo,
     bullets: [
-      'Developed responsive frontend components using React and Tailwind CSS.',
-      'Integrated REST APIs and third-party services.',
-      'Worked with MySQL and MongoDB databases.',
-      'Collaborated with the team to deliver scalable web applications.',
-      'Fixed bugs and optimized application performance.'
+      'Developed and maintained full-stack web applications using React.js, Node.js, Express.js, MySQL, and MongoDB.',
+      'Integrated RESTful APIs and built responsive user interfaces using modern frontend technologies.',
+      'Managed databases and performed debugging, testing, and deployment following software development best practices.',
+      'Collaborated using Git and participated in real-world software development workflows.',
+      'Strengthened problem-solving, communication, and teamwork skills while delivering assigned tasks on time.'
     ]
   },
   {
@@ -57,8 +59,12 @@ export default function Experience() {
               className="relative"
             >
               {/* Timeline Icon Badge */}
-              <div className="absolute -left-[53px] md:-left-[57px] top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-gradient-to-r from-accentPurple to-accentViolet border-4 border-darkBg flex items-center justify-center text-white shadow-purple-glow z-10">
-                <FiBriefcase size={14} />
+              <div className="absolute -left-[54px] md:-left-[60px] top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-gradient-to-r from-accentPurple to-accentViolet border-4 border-darkBg flex items-center justify-center text-white shadow-purple-glow z-10 overflow-hidden">
+                {item.logo ? (
+                  <img src={item.logo} alt={`${item.company} logo`} className="w-full h-full object-contain bg-white p-0.5 rounded-full" />
+                ) : (
+                  <FiBriefcase size={14} />
+                )}
               </div>
 
               {/* Glassmorphic timeline Card */}
