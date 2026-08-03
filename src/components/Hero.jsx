@@ -1,7 +1,14 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaEnvelope, FaReact, FaNodeJs, FaChevronRight, FaDownload } from 'react-icons/fa';
-import { SiLeetcode, SiMongodb, SiMysql, SiExpress } from 'react-icons/si';
+import {
+  FaGithub,
+  FaLinkedin,
+  FaEnvelope,
+  FaReact,
+  FaNodeJs,
+  FaChevronRight,
+  FaDownload,
+} from 'react-icons/fa';
+import { SiLeetcode, SiMongodb, SiMysql } from 'react-icons/si';
 import heroAvatar from '../assets/hero-avatar.png';
 
 export default function Hero() {
@@ -18,7 +25,10 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="relative w-full min-h-[90vh] md:min-h-screen pt-2 pb-8 flex items-center">
+    <section
+      id="home"
+      className="relative w-full min-h-[90vh] md:min-h-screen pt-2 pb-8 flex items-center"
+    >
       {/* Background radial glow */}
       <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[350px] md:w-[500px] h-[350px] md:h-[500px] rounded-full bg-accentPurple/25 blur-[80px] pointer-events-none aurora-bg" />
       <div className="absolute top-1/3 right-1/4 translate-x-1/2 w-[300px] md:w-[400px] h-[300px] md:h-[400px] rounded-full bg-accentViolet/20 blur-[80px] pointer-events-none aurora-bg-delay" />
@@ -26,9 +36,8 @@ export default function Hero() {
       {/* Main hero card */}
       <div className="w-full bg-glass border border-glass rounded-[24px] md:rounded-[32px] p-6 md:p-10 shadow-2xl overflow-hidden relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          
           {/* Left Text details */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -49,7 +58,8 @@ export default function Hero() {
 
             {/* Description */}
             <p className="text-sm sm:text-base text-grayText mb-8 max-w-xl leading-relaxed">
-              Full Stack MERN Developer passionate about building modern web applications and solving real-world problems.
+              Full Stack MERN Developer passionate about building modern web
+              applications and solving real-world problems.
             </p>
 
             {/* Actions */}
@@ -59,9 +69,12 @@ export default function Hero() {
                 className="group flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-accentPurple to-accentViolet text-white font-medium text-xs transition-all duration-300 hover:shadow-purple-glow hover:scale-105"
               >
                 <span>View Projects</span>
-                <FaChevronRight size={12} className="transition-transform duration-300 group-hover:translate-x-1" />
+                <FaChevronRight
+                  size={12}
+                  className="transition-transform duration-300 group-hover:translate-x-1"
+                />
               </button>
-              
+
               <a
                 href="#resume"
                 className="flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 border border-white/10 text-white font-medium text-xs transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:scale-105"
@@ -74,10 +87,26 @@ export default function Hero() {
             {/* Social Links */}
             <div className="flex items-center gap-4">
               {[
-                { icon: <FaGithub size={20} />, url: 'https://github.com/Vk2610', label: 'GitHub' },
-                { icon: <FaLinkedin size={20} />, url: 'https://www.linkedin.com/in/vedant-kumbhar-084383221/', label: 'LinkedIn' },
-                { icon: <SiLeetcode size={20} />, url: 'https://leetcode.', label: 'LeetCode' },
-                { icon: <FaEnvelope size={20} />, url: 'mailto:vedantkumbhar82@gmail.com', label: 'Email' }
+                {
+                  icon: <FaGithub size={20} />,
+                  url: 'https://github.com/Vk2610',
+                  label: 'GitHub',
+                },
+                {
+                  icon: <FaLinkedin size={20} />,
+                  url: 'https://www.linkedin.com/in/vedant-kumbhar-084383221/',
+                  label: 'LinkedIn',
+                },
+                {
+                  icon: <SiLeetcode size={20} />,
+                  url: 'https://leetcode.',
+                  label: 'LeetCode',
+                },
+                {
+                  icon: <FaEnvelope size={20} />,
+                  url: 'mailto:vedantkumbhar82@gmail.com',
+                  label: 'Email',
+                },
               ].map((social, index) => (
                 <a
                   key={index}
@@ -97,7 +126,6 @@ export default function Hero() {
           <div className="lg:col-span-5 flex flex-col items-center justify-center relative w-full h-full min-h-[350px] lg:min-h-auto">
             {/* Avatar Orbit Graphics */}
             <div className="relative w-[280px] sm:w-[320px] h-[280px] sm:h-[320px] flex items-center justify-center">
-              
               {/* Purple glowing orbit ring */}
               <motion.div
                 animate={{ rotate: 360 }}
@@ -107,14 +135,18 @@ export default function Hero() {
                 <div className="w-[12px] h-[12px] rounded-full bg-accentViolet absolute -top-1.5 shadow-[0_0_10px_#A855F7]" />
                 <div className="w-[8px] h-[8px] rounded-full bg-accentPurple absolute -bottom-1 shadow-[0_0_8px_#8B5CF6]" />
               </motion.div>
-              
+
               {/* Outer purple blur energy circle */}
               <div className="absolute w-[220px] sm:w-[260px] h-[220px] sm:h-[260px] rounded-full bg-gradient-to-tr from-accentPurple/20 to-accentViolet/20 blur-md border border-accentPurple/30" />
-              
+
               {/* 3D Avatar Image */}
               <motion.div
                 animate={{ y: [0, -12, 0] }}
-                transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut' }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 6,
+                  ease: 'easeInOut',
+                }}
                 className="relative z-10 w-[240px] sm:w-[280px] h-[240px] sm:h-[280px] flex items-center justify-center overflow-hidden"
               >
                 <img
@@ -126,20 +158,42 @@ export default function Hero() {
             </div>
 
             {/* Floating Tech Stack Card (centered below the avatar) */}
-            <motion.div 
+            <motion.div
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.8 }}
               className="mt-6 w-full max-w-[340px] sm:max-w-[400px] bg-glass/90 border border-glass rounded-2xl p-4 shadow-xl backdrop-blur-md flex items-center justify-around gap-2"
             >
               {[
-                { icon: <FaReact className="text-[#61DAFB]" size={22} />, label: 'React' },
-                { icon: <FaNodeJs className="text-[#339933]" size={22} />, label: 'Node.js' },
-                { icon: <div className="text-white text-[10px] font-bold w-6 h-6 rounded-full bg-gray-700/60 border border-gray-500/30 flex items-center justify-center">ex</div>, label: 'Express.js' },
-                { icon: <SiMongodb className="text-[#47A248]" size={22} />, label: 'MongoDB' },
-                { icon: <SiMysql className="text-[#4479A1]" size={22} />, label: 'MySQL' }
+                {
+                  icon: <FaReact className="text-[#61DAFB]" size={22} />,
+                  label: 'React',
+                },
+                {
+                  icon: <FaNodeJs className="text-[#339933]" size={22} />,
+                  label: 'Node.js',
+                },
+                {
+                  icon: (
+                    <div className="text-white text-[10px] font-bold w-6 h-6 rounded-full bg-gray-700/60 border border-gray-500/30 flex items-center justify-center">
+                      ex
+                    </div>
+                  ),
+                  label: 'Express.js',
+                },
+                {
+                  icon: <SiMongodb className="text-[#47A248]" size={22} />,
+                  label: 'MongoDB',
+                },
+                {
+                  icon: <SiMysql className="text-[#4479A1]" size={22} />,
+                  label: 'MySQL',
+                },
               ].map((tech, index) => (
-                <div key={index} className="flex flex-col items-center gap-1 group">
+                <div
+                  key={index}
+                  className="flex flex-col items-center gap-1 group"
+                >
                   <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center transition-all duration-300 group-hover:bg-accentPurple/10 group-hover:border-accentPurple/30 group-hover:scale-110">
                     {tech.icon}
                   </div>
@@ -149,7 +203,6 @@ export default function Hero() {
                 </div>
               ))}
             </motion.div>
-
           </div>
         </div>
       </div>

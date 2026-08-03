@@ -16,16 +16,6 @@ const journey = [
       'Collaborated using Git and participated in real-world software development workflows.',
       'Strengthened problem-solving, communication, and teamwork skills while delivering assigned tasks on time.'
     ]
-  },
-  {
-    role: 'Freelance Projects',
-    company: 'Self Employed',
-    duration: '2023 - Present',
-    bullets: [
-      'Built multiple full stack web applications for clients.',
-      'Implemented authentication, payment gateways and dashboards.',
-      'Delivered clean, scalable and user-friendly solutions.'
-    ]
   }
 ];
 

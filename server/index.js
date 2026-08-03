@@ -2,7 +2,6 @@ import express from 'express';
 import nodemailer from 'nodemailer';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import path from 'path';
 
 // Load environment variables
 dotenv.config();
@@ -11,10 +10,12 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Enable CORS so the React app can communicate with the backend
-app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:3000'], // Allow local dev server
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: ['http://localhost:5173', 'http://localhost:3000'], // Allow local dev server
+    credentials: true,
+  }),
+);
 
 app.use(express.json());
 
@@ -24,14 +25,17 @@ app.post('/api/contact', async (req, res) => {
 
   // Simple validation
   if (!name || !email || !message) {
-    return res.status(400).json({ error: 'Please provide name, email, and message.' });
+    return res
+      .status(400)
+      .json({ error: 'Please provide name, email, and message.' });
   }
 
   // Check if credentials exist
   if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
     console.error('SMTP credentials missing in server/.env configuration.');
-    return res.status(500).json({ 
-      error: 'SMTP configurations are not set up on the server yet. Please add credentials to server/.env.' 
+    return res.status(500).json({
+      error:
+        'SMTP configurations are not set up on the server yet. Please add credentials to server/.env.',
     });
   }
 
@@ -40,8 +44,8 @@ app.post('/api/contact', async (req, res) => {
     service: 'gmail',
     auth: {
       user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS // Gmail App Password is required
-    }
+      pass: process.env.EMAIL_PASS, // Gmail App Password is required
+    },
   });
 
   // Compose email metadata
@@ -63,19 +67,21 @@ app.post('/api/contact', async (req, res) => {
           This message was sent from your portfolio website contact form.
         </p>
       </div>
-    `
+    `,
   };
 
   try {
     // Send email
     await transporter.sendMail(mailOptions);
     console.log(`Email successfully sent from ${email} to ${mailOptions.to}`);
-    return res.status(200).json({ success: true, message: 'Message sent successfully!' });
+    return res
+      .status(200)
+      .json({ success: true, message: 'Message sent successfully!' });
   } catch (error) {
     console.error('Nodemailer error sending mail:', error);
-    return res.status(500).json({ 
+    return res.status(500).json({
       error: 'Failed to send email. Please verify SMTP settings and try again.',
-      details: error.message 
+      details: error.message,
     });
   }
 });

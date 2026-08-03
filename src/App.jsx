@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaArrowUp } from 'react-icons/fa';
 
@@ -11,7 +11,6 @@ import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Github from './components/Github';
 import Contact from './components/Contact';
-// import Footer from './components/Footer';
 
 export default function App() {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -45,7 +44,7 @@ export default function App() {
 
     window.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseleave', handleMouseLeave);
-    
+
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseleave', handleMouseLeave);
@@ -61,13 +60,13 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen bg-darkBg text-white overflow-hidden font-sans">
-      
       {/* Purple spotlight hover effect following the cursor */}
-      <div 
+      <div
         ref={spotlightRef}
         className="fixed w-[600px] h-[600px] rounded-full pointer-events-none z-0 transition-opacity duration-300 opacity-0 hidden md:block"
         style={{
-          background: 'radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(168, 85, 247, 0.05) 50%, transparent 70%)',
+          background:
+            'radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(168, 85, 247, 0.05) 50%, transparent 70%)',
           left: 0,
           top: 0,
           willChange: 'transform',
@@ -86,7 +85,6 @@ export default function App() {
 
       {/* Main Dashboard Layout Container */}
       <main className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 z-10">
-        
         {/* 
           Dashboard Responsive Grid:
           - Desktop (lg:grid-cols-2): Shows Column 1 & Column 2 in clean grid rows.
@@ -105,7 +103,6 @@ export default function App() {
 
         {/* Global Footer Credits */}
         {/* <Footer /> */}
-
       </main>
 
       {/* Floating Back to Top Button */}
@@ -124,7 +121,6 @@ export default function App() {
           </motion.button>
         )}
       </AnimatePresence>
-
     </div>
   );
 }

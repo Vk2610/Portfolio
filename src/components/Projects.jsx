@@ -1,7 +1,6 @@
-import React, { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
-import { FaGithub, FaExternalLinkAlt, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaGithub, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { HiOutlineExternalLink } from 'react-icons/hi';
 
 // Swiper styles
@@ -22,7 +21,7 @@ const projects = [
     image: rayatKutumbImg,
     tags: ['React', 'Node.js', 'MySQL', 'Express.js', 'Cloudinary'],
     github: 'https://github.com/Vk2610/rayat-kutumb-kalyan-frontend.git',
-    demo: 'https://rayat-kutumb-kalyan-frontend-git-main-vk2610s-projects.vercel.app/'
+    demo: 'https://rayat-kutumb-kalyan-frontend-git-main-vk2610s-projects.vercel.app/',
   },
   {
     id: 2,
@@ -31,7 +30,7 @@ const projects = [
     image: miroImg,
     tags: ['Next.js', 'Liveblocks', 'Convex', 'Clerk'],
     github: 'https://github.com/Vk2610/Miro.git',
-    demo: 'https://miro-nine.vercel.app/'
+    demo: 'https://miro-nine.vercel.app/',
   },
   {
     id: 3,
@@ -40,7 +39,7 @@ const projects = [
     image: cattleBreedImg,
     tags: ['Python', 'Computer Vision', 'PyTorch', 'Machine Learning'],
     github: 'https://github.com/Vk2610/Cattle-Breed-Detector.git',
-    demo: ''
+    demo: '',
   },
   {
     id: 4,
@@ -49,15 +48,14 @@ const projects = [
     image: cngImg,
     tags: ['React', 'Node.js', 'MongoDB'],
     github: 'https://github.',
-    demo: 'https://demo.'
-  }
+    demo: 'https://demo.',
+  },
 ];
 
 export default function Projects() {
   return (
     <section id="projects" className="relative w-full py-12 scroll-mt-20">
       <div className="bg-glass border border-glass rounded-[24px] md:rounded-[32px] p-6 md:p-10 shadow-2xl overflow-hidden relative">
-        
         {/* Header containing Title & Prev/Next & View All */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
           <div className="flex flex-col text-left">
@@ -68,10 +66,10 @@ export default function Projects() {
               Featured Projects
             </h2>
           </div>
-          
+
           <div className="flex items-center gap-4">
-            <a 
-              href="#all-projects" 
+            <a
+              href="#all-projects"
               className="text-xs font-semibold text-grayText hover:text-white flex items-center gap-1.5 transition-colors duration-200 border border-white/10 hover:border-white/20 bg-white/5 px-4 py-2 rounded-full"
             >
               <span>View All Projects</span>
@@ -100,27 +98,26 @@ export default function Projects() {
               prevEl: '.project-prev-btn',
               nextEl: '.project-next-btn',
             }}
-            pagination={{ 
-              clickable: true, 
+            pagination={{
+              clickable: true,
               el: '.project-pagination-dots',
               bulletClass: 'swiper-pagination-bullet',
-              bulletActiveClass: 'swiper-pagination-bullet-active'
+              bulletActiveClass: 'swiper-pagination-bullet-active',
             }}
             breakpoints={{
               640: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 }
+              1024: { slidesPerView: 3 },
             }}
             className="pb-12"
           >
             {projects.map((project) => (
               <SwiperSlide key={project.id} className="h-auto">
                 <div className="group bg-glass/85 border border-glass rounded-[20px] overflow-hidden flex flex-col h-full hover:border-accentPurple/30 transition-all duration-300 hover:shadow-purple-glow">
-                  
                   {/* Image Container with Hover zoom */}
                   <div className="w-full aspect-[2.2/1] overflow-hidden bg-black/40 border-b border-glass relative">
-                    <img 
-                      src={project.image} 
-                      alt={project.name} 
+                    <img
+                      src={project.image}
+                      alt={project.name}
                       className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 select-none pointer-events-none"
                     />
                     {/* Glow cover overlays */}
@@ -141,8 +138,8 @@ export default function Projects() {
                       {/* Tech tags */}
                       <div className="flex flex-wrap gap-1.5 max-w-[70%]">
                         {project.tags.map((tag) => (
-                          <span 
-                            key={tag} 
+                          <span
+                            key={tag}
                             className="px-2.5 py-1 rounded-md bg-white/5 border border-white/5 text-xs font-semibold text-grayText"
                           >
                             {tag}
@@ -152,19 +149,20 @@ export default function Projects() {
 
                       {/* Code/Demo Action Links */}
                       <div className="flex items-center gap-2">
-                        {project.github && project.github !== 'https://github.' && (
-                          <a 
-                            href={project.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="w-8 h-8 rounded-full bg-white/5 border border-white/10 text-grayText hover:text-white flex items-center justify-center hover:bg-accentPurple/10 hover:border-accentPurple/30 transition-all duration-300"
-                            title="View Code on GitHub"
-                          >
-                            <FaGithub size={15} />
-                          </a>
-                        )}
+                        {project.github &&
+                          project.github !== 'https://github.' && (
+                            <a
+                              href={project.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="w-8 h-8 rounded-full bg-white/5 border border-white/10 text-grayText hover:text-white flex items-center justify-center hover:bg-accentPurple/10 hover:border-accentPurple/30 transition-all duration-300"
+                              title="View Code on GitHub"
+                            >
+                              <FaGithub size={15} />
+                            </a>
+                          )}
                         {project.demo && project.demo !== 'https://demo.' && (
-                          <a 
+                          <a
                             href={project.demo}
                             target="_blank"
                             rel="noopener noreferrer"
@@ -176,9 +174,7 @@ export default function Projects() {
                         )}
                       </div>
                     </div>
-
                   </div>
-
                 </div>
               </SwiperSlide>
             ))}
@@ -187,7 +183,6 @@ export default function Projects() {
 
         {/* Custom Pagination Indicator Dots (placed under the slider) */}
         <div className="project-pagination-dots flex items-center justify-center gap-1.5 mt-2" />
-
       </div>
     </section>
   );
