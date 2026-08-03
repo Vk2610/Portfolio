@@ -1,7 +1,7 @@
 {
   "name": "portfolio-backend",
   "version": "1.0.0",
-  "description": "Express server for sending email notifications using Nodemailer",
+  "description": "Lightweight Express backend for local portfolio development",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -11,7 +11,6 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "express": "^4.19.2",
-    "nodemailer": "^6.9.13"
+    "express": "^4.19.2"
   }
 }

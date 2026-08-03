@@ -1,63 +1,82 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiMail, FiPhone, FiMapPin, FiSend, FiX } from 'react-icons/fi';
 
 export default function Contact() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
-    
+
     setLoading(true);
     setError(null);
     setSuccess(false);
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
+      const subject = encodeURIComponent(
+        `Portfolio Contact from ${formData.name}`,
+      );
+      const body = encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`,
+      );
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=vedantkumbhar82@gmail.com&su=${subject}&body=${body}`;
+      const mailtoUrl = `mailto:vedantkumbhar82@gmail.com?subject=${subject}&body=${body}`;
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to send message.');
+      const newWindow = window.open(gmailUrl, '_blank', 'noopener,noreferrer');
+      if (!newWindow) {
+        window.location.href = mailtoUrl;
       }
 
       setSuccess(true);
       setFormData({ name: '', email: '', message: '' });
-      
-      // Close modal after showing success state briefly
+
       setTimeout(() => {
         setSuccess(false);
         setIsModalOpen(false);
-      }, 3000);
+      }, 2500);
     } catch (err) {
       console.error('Contact form submission error:', err);
-      setError(err.message || 'Something went wrong. Please try again.');
+      setError(
+        'Something went wrong while opening your email app. Please try again.',
+      );
     } finally {
       setLoading(false);
     }
   };
 
   const contactDetails = [
-    { icon: <FiMail className="text-accentPurple" size={18} />, label: 'Email', value: 'vedantkumbhar82@gmail.com', href: 'mailto:vedantkumbhar82@gmail.com' },
-    { icon: <FiPhone className="text-accentPurple" size={18} />, label: 'Phone', value: '+91 9067723468', href: 'tel:+919067723468' },
-    { icon: <FiMapPin className="text-accentPurple" size={18} />, label: 'Location', value: 'Satara, Maharashtra, India', href: 'https://maps.google.com/?q=Satara,Maharashtra,India' }
+    {
+      icon: <FiMail className="text-accentPurple" size={18} />,
+      label: 'Email',
+      value: 'vedantkumbhar82@gmail.com',
+      href: 'mailto:vedantkumbhar82@gmail.com',
+    },
+    {
+      icon: <FiPhone className="text-accentPurple" size={18} />,
+      label: 'Phone',
+      value: '+91 9067723468',
+      href: 'tel:+919067723468',
+    },
+    {
+      icon: <FiMapPin className="text-accentPurple" size={18} />,
+      label: 'Location',
+      value: 'Satara, Maharashtra, India',
+      href: 'https://maps.google.com/?q=Satara,Maharashtra,India',
+    },
   ];
 
   return (
     <section id="contact" className="relative w-full py-6 scroll-mt-20">
       <div className="bg-glass border border-glass rounded-[24px] p-6 md:p-8 shadow-2xl overflow-hidden text-left h-full flex flex-col justify-between">
-        
         {/* Title details */}
         <div>
           <span className="text-xs font-bold uppercase tracking-wider text-accentPurple mb-1.5 block">
@@ -67,14 +86,15 @@ export default function Contact() {
             Get In Touch
           </h2>
           <p className="text-sm text-grayText leading-relaxed mb-6">
-            I'm always open to discussing new projects, creative ideas or opportunities.
+            I'm always open to discussing new projects, creative ideas or
+            opportunities.
           </p>
         </div>
 
         {/* Contact details list */}
         <div className="space-y-4 mb-6">
           {contactDetails.map((item, idx) => (
-            <a 
+            <a
               key={idx}
               href={item.href}
               target="_blank"
@@ -85,8 +105,12 @@ export default function Contact() {
                 {item.icon}
               </div>
               <div className="flex flex-col text-left">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-grayText mb-0.5">{item.label}</span>
-                <span className="text-sm text-white font-medium group-hover:text-accentPurple transition-colors duration-200">{item.value}</span>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-grayText mb-0.5">
+                  {item.label}
+                </span>
+                <span className="text-sm text-white font-medium group-hover:text-accentPurple transition-colors duration-200">
+                  {item.value}
+                </span>
               </div>
             </a>
           ))}
@@ -98,16 +122,17 @@ export default function Contact() {
           className="group flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-gradient-to-r from-accentPurple to-accentViolet text-white font-medium text-sm transition-all duration-300 hover:shadow-purple-glow hover:scale-102"
         >
           <span>Send Message</span>
-          <FiSend size={13} className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5" />
+          <FiSend
+            size={13}
+            className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5"
+          />
         </button>
-
       </div>
 
       {/* Floating Contact Form Modal */}
       <AnimatePresence>
         {isModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            
             {/* Modal backdrop overlay */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -130,7 +155,7 @@ export default function Contact() {
               className="bg-[#0c0c0e] border border-glass rounded-[24px] max-w-md w-full p-6 md:p-8 shadow-2xl relative z-10 text-left"
             >
               {/* Close Button */}
-              <button 
+              <button
                 onClick={() => {
                   if (!loading) {
                     setIsModalOpen(false);
@@ -143,8 +168,12 @@ export default function Contact() {
                 <FiX size={20} />
               </button>
 
-              <h3 className="text-xl font-bold text-white mb-1 font-sans">Send a Message</h3>
-              <p className="text-xs text-grayText mb-6">Drop your details below and I'll get back to you shortly.</p>
+              <h3 className="text-xl font-bold text-white mb-1 font-sans">
+                Send a Message
+              </h3>
+              <p className="text-xs text-grayText mb-6">
+                Drop your details below and I'll get back to you shortly.
+              </p>
 
               {error && (
                 <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-xl text-red-400 text-xs mb-4">
@@ -157,46 +186,63 @@ export default function Contact() {
                   <div className="w-14 h-14 rounded-full bg-green-500/20 border border-green-500/50 flex items-center justify-center text-green-400 mb-4 animate-bounce">
                     <FiSend size={24} />
                   </div>
-                  <h4 className="text-lg font-bold text-white mb-2">Message Sent!</h4>
-                  <p className="text-xs text-grayText">Thank you, your message has been delivered.</p>
+                  <h4 className="text-lg font-bold text-white mb-2">
+                    Email Draft Opened
+                  </h4>
+                  <p className="text-xs text-grayText">
+                    Your mail app or Gmail has been opened with the recipient
+                    pre-filled.
+                  </p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-[11px] font-bold text-grayText uppercase">Name</label>
-                    <input 
-                      type="text" 
+                    <label className="text-[11px] font-bold text-grayText uppercase">
+                      Name
+                    </label>
+                    <input
+                      type="text"
                       required
                       disabled={loading}
                       placeholder="Your Name"
                       value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, name: e.target.value })
+                      }
                       className="w-full bg-black/30 border border-glass rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-accentPurple/50 focus:bg-black/50 transition-all duration-300 disabled:opacity-50"
                     />
                   </div>
 
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-[11px] font-bold text-grayText uppercase">Email</label>
-                    <input 
-                      type="email" 
+                    <label className="text-[11px] font-bold text-grayText uppercase">
+                      Email
+                    </label>
+                    <input
+                      type="email"
                       required
                       disabled={loading}
                       placeholder="name@example.com"
                       value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, email: e.target.value })
+                      }
                       className="w-full bg-black/30 border border-glass rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-accentPurple/50 focus:bg-black/50 transition-all duration-300 disabled:opacity-50"
                     />
                   </div>
 
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-[11px] font-bold text-grayText uppercase">Message</label>
-                    <textarea 
+                    <label className="text-[11px] font-bold text-grayText uppercase">
+                      Message
+                    </label>
+                    <textarea
                       required
                       disabled={loading}
                       rows="4"
                       placeholder="Hi Vedant, I'd love to connect..."
                       value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, message: e.target.value })
+                      }
                       className="w-full bg-black/30 border border-glass rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-accentPurple/50 focus:bg-black/50 resize-none transition-all duration-300 disabled:opacity-50"
                     />
                   </div>
@@ -211,7 +257,6 @@ export default function Contact() {
                   </button>
                 </form>
               )}
-
             </motion.div>
           </div>
         )}
